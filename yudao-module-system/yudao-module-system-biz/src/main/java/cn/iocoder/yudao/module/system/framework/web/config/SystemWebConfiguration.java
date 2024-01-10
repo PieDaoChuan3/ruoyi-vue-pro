@@ -21,4 +21,5 @@ public class SystemWebConfiguration {
         return YudaoSwaggerAutoConfiguration.buildGroupedOpenApi("system");
     }
 
+
 }
