@@ -21,8 +21,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.Filter;
@@ -125,4 +124,19 @@ public class YudaoWebAutoConfiguration implements WebMvcConfigurer {
     public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
         return restTemplateBuilder.build();
     }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/static/**")
+                .addResourceLocations("classpath/static/static/**").resourceChain(true);
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+
+        registry.addViewController("/").setViewName("forward:/index.html");
+
+
+    }
+
 }
