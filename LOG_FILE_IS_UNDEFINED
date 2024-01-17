@@ -1,0 +1,40 @@
+2024-01-09 11:07:54.974 | [34m INFO 2612[0;39m | [1;33mmain [TID: N/A][0;39m [1;32mc.i.yudao.server.YudaoServerApplication [0;39m | Starting YudaoServerApplication using Java 17.0.3 on WIN-SLNGHPO23RS with PID 2612 (D:\jh\workspace\test-project\ruoyi-vue-pro\yudao-server\target\classes started by Administrator in D:\jh\workspace\test-project\ruoyi-vue-pro)
+2024-01-09 11:07:54.977 | [34m INFO 2612[0;39m | [1;33mmain [TID: N/A][0;39m [1;32mc.i.yudao.server.YudaoServerApplication [0;39m | No active profile set, falling back to 1 default profile: "default"
+2024-01-09 11:07:55.166 | [31m WARN 2612[0;39m | [1;33mmain [TID: N/A][0;39m [1;32mConfigServletWebServerApplicationContext[0;39m | Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [cn.iocoder.yudao.server.YudaoServerApplication]; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'yudao.info.base-package' in value "${yudao.info.base-package}.server"
+2024-01-09 11:07:55.406 | [1;31mERROR 2612[0;39m | [1;33mmain [TID: N/A][0;39m [1;32mo.s.boot.SpringApplication              [0;39m | Application run failed
+
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [cn.iocoder.yudao.server.YudaoServerApplication]; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'yudao.info.base-package' in value "${yudao.info.base-package}.server"
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:188)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:331)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:247)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:311)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:112)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:748)
+	at org.springframework.context.support.AbstractApplicationContext.__refresh(AbstractApplicationContext.java:564)
+	at org.springframework.context.support.AbstractApplicationContext.jrLockAndRefresh(AbstractApplicationContext.java:41002)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:42008)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:409)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289)
+	at cn.iocoder.yudao.server.YudaoServerApplication.main(YudaoServerApplication.java:24)
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'yudao.info.base-package' in value "${yudao.info.base-package}.server"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.core.env.AbstractEnvironment.resolveRequiredPlaceholders(AbstractEnvironment.java:630)
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.resolveBasePackage(ClassPathScanningCandidateComponentProvider.java:478)
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.__scanCandidateComponents(ClassPathScanningCandidateComponentProvider.java:420)
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.scanCandidateComponents(ClassPathScanningCandidateComponentProvider.java:48002)
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.findCandidateComponents(ClassPathScanningCandidateComponentProvider.java:316)
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:276)
+	at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:128)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:295)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:249)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:206)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:174)
+	... 15 common frames omitted
+
