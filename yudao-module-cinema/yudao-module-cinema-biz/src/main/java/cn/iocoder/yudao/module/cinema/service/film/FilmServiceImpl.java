@@ -87,7 +87,7 @@ public class FilmServiceImpl implements FilmService {
 
 
     @Override
-    @Cacheable(key = "#pageReqVO.pageNO + '_' + #pageReqVO.pageSize", unless = "#result == null")
+    @Cacheable(key = "#pageReqVO.cacheKey()", unless = "#result == null")
     public PageResult<FilmDO> getFilmPage(FilmPageReqVO pageReqVO) {
         return filmMapper.selectPage(pageReqVO);
     }

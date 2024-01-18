@@ -11,13 +11,13 @@ import cn.iocoder.yudao.framework.common.pojo.PageParam;
 @ToString(callSuper = true)
 public class FilmPageReqVO extends PageParam {
 
-//    @Schema(description = "影片id", example = "16459")
-//    private Integer id;
-//
-//    @Schema(description = "影片名称", example = "阿凡达")
-//    private String name;
-//
-//    @Schema(description = "分类", example = "科幻")
-//    private String classify;
+    @Schema(description = "影片id", example = "16459")
+    private Integer id;
+
+    @Schema(description = "影片名称", example = "阿凡达")
+    private String name;
+
+    @Schema(description = "分类", example = "科幻")
+    private String classify;
 
 }

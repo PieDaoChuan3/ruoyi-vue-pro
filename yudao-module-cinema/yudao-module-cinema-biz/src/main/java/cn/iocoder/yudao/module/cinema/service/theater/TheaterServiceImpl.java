@@ -82,7 +82,7 @@ public class TheaterServiceImpl implements TheaterService {
     }
 
     @Override
-    @Cacheable(key = "#pageReqVO.pageNO + '_' + #pageReqVO.pageSize", unless = "#result == null")
+    @Cacheable(key = "#pageReqVO.cacheKey()", unless = "#result == null")
     public PageResult<TheaterDO> getTheaterPage(TheaterPageReqVO pageReqVO) {
         return theaterMapper.selectPage(pageReqVO);
     }
