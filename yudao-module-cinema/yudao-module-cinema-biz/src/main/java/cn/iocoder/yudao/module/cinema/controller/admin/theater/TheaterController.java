@@ -51,7 +51,7 @@ public class TheaterController {
 
     @PutMapping("/update")
     @Operation(summary = "更新电影院")
-    @PreAuthorize("@ss.hasPermission('cinema:theater:create')")
+    @PreAuthorize("@ss.hasPermission('cinema:theater:update')")
     public CommonResult<Boolean> updateTheater(@Valid @RequestBody TheaterSaveReqVO updateReqVO) {
         theaterService.updateTheater(updateReqVO);
         return success(true);
@@ -60,7 +60,7 @@ public class TheaterController {
     @DeleteMapping("/delete")
     @Operation(summary = "删除电影院")
     @Parameter(name = "id", description = "编号", required = true)
-    @PreAuthorize("@ss.hasPermission('cinema:theater:create')")
+    @PreAuthorize("@ss.hasPermission('cinema:theater:delete')")
     public CommonResult<Boolean> deleteTheater(@RequestParam("id") Integer id) {
         theaterService.deleteTheater(id);
         return success(true);
@@ -69,7 +69,7 @@ public class TheaterController {
     @GetMapping("/get")
     @Operation(summary = "获得电影院")
     @Parameter(name = "id", description = "编号", required = true, example = "1024")
-    @PreAuthorize("@ss.hasPermission('cinema:theater:create')")
+    @PreAuthorize("@ss.hasPermission('cinema:theater:query')")
     public CommonResult<TheaterRespVO> getTheater(@RequestParam("id") Integer id) {
         TheaterDO theater = theaterService.getTheater(id);
         return success(BeanUtils.toBean(theater, TheaterRespVO.class));
@@ -77,7 +77,7 @@ public class TheaterController {
 
     @GetMapping("/page")
     @Operation(summary = "获得电影院分页")
-    @PreAuthorize("@ss.hasPermission('cinema:theater:create')")
+    @PreAuthorize("@ss.hasPermission('cinema:theater:query')")
     public CommonResult<PageResult<TheaterRespVO>> getTheaterPage(@Valid TheaterPageReqVO pageReqVO) {
         PageResult<TheaterDO> pageResult = theaterService.getTheaterPage(pageReqVO);
         return success(BeanUtils.toBean(pageResult, TheaterRespVO.class));
@@ -86,7 +86,7 @@ public class TheaterController {
     @GetMapping("/export-excel")
     @Operation(summary = "导出影院 Excel")
     @OperateLog(type = EXPORT)
-    @PreAuthorize("@ss.hasPermission('cinema:theater:export-excel')")
+    @PreAuthorize("@ss.hasPermission('cinema:theater:export')")
     public void exportFilmExcel(@Valid TheaterPageReqVO pageReqVO,
                                 HttpServletResponse response) throws IOException {
         pageReqVO.setPageSize(PageParam.PAGE_SIZE_NONE);

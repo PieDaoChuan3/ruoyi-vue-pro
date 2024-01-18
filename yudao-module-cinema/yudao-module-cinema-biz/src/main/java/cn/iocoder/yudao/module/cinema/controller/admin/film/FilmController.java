@@ -66,7 +66,7 @@ public class FilmController {
     @GetMapping("/get")
     @Operation(summary = "获得影片")
     @Parameter(name = "id", description = "编号", required = true, example = "1024")
-    @PreAuthorize("@ss.hasPermission('cinema:film:get')")
+    @PreAuthorize("@ss.hasPermission('cinema:film:query')")
     public CommonResult<FilmRespVO> getFilm(@RequestParam("id") Integer id) {
         FilmDO film = filmService.getFilm(id);
         return success(BeanUtils.toBean(film, FilmRespVO.class));
@@ -74,7 +74,7 @@ public class FilmController {
 
     @GetMapping("/page")
     @Operation(summary = "获得影片分页")
-    @PreAuthorize("@ss.hasPermission('cinema:film:page')")
+    @PreAuthorize("@ss.hasPermission('cinema:film:query')")
     public CommonResult<PageResult<FilmRespVO>> getFilmPage(@Valid FilmPageReqVO pageReqVO) {
         PageResult<FilmDO> pageResult = filmService.getFilmPage(pageReqVO);
         return success(BeanUtils.toBean(pageResult, FilmRespVO.class));
@@ -83,7 +83,7 @@ public class FilmController {
     @GetMapping("/export-excel")
     @Operation(summary = "导出影片 Excel")
     @OperateLog(type = EXPORT)
-    @PreAuthorize("@ss.hasPermission('cinema:film:export-excel')")
+    @PreAuthorize("@ss.hasPermission('cinema:film:export')")
     public void exportFilmExcel(@Valid FilmPageReqVO pageReqVO,
                                    HttpServletResponse response) throws IOException {
         pageReqVO.setPageSize(PageParam.PAGE_SIZE_NONE);

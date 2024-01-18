@@ -85,7 +85,7 @@ public class OrderController {
     @GetMapping("/get")
     @Operation(summary = "获得订单")
     @Parameter(name = "id", description = "编号", required = true, example = "1024")
-    @PreAuthorize("@ss.hasPermission('cinema:film:get')")
+    @PreAuthorize("@ss.hasPermission('cinema:film:query')")
     public CommonResult<OrderRespVO> getFilm(@RequestParam("id") Long id) {
         OrderDO order = orderService.getOrder(id);
         OrderRespVO Resp = orderConverter.to(order);
@@ -95,9 +95,9 @@ public class OrderController {
         return success(Resp);
     }
 
-    @GetMapping("/pages")
+    @GetMapping("/page")
     @Operation(summary = "获得电影票订单分页")
-    @PreAuthorize("@ss.hasPermission('cinema:film:page')")
+    @PreAuthorize("@ss.hasPermission('cinema:film:query')")
     public CommonResult<PageResult<OrderRespVO>> getOrderPage(@Valid OrderPageReqVO pageReqVO) {
         PageResult<OrderDO> pageResult = orderService.getOrderPage(pageReqVO);
         PageResult<OrderRespVO> pageResp = new PageResult<>();
@@ -121,7 +121,7 @@ public class OrderController {
     @GetMapping("/export-excel")
     @Operation(summary = "导出电影场次 Excel")
     @OperateLog(type = EXPORT)
-    @PreAuthorize("@ss.hasPermission('cinema:schedule:export-excel')")
+    @PreAuthorize("@ss.hasPermission('cinema:schedule:export')")
     public void exportFilmExcel(@Valid OrderPageReqVO pageReqVO,
                                 HttpServletResponse response) throws IOException {
         pageReqVO.setPageSize(PageParam.PAGE_SIZE_NONE);

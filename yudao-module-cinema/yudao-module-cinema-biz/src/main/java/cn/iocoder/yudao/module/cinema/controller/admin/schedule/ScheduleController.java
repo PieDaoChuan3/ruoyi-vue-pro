@@ -61,7 +61,7 @@ public class ScheduleController {
 
     @PutMapping("/update")
     @Operation(summary = "更新电影场次")
-    @PreAuthorize("@ss.hasPermission('cinema:schedule:create')")
+    @PreAuthorize("@ss.hasPermission('cinema:schedule:update')")
     public CommonResult<Boolean> updateTheater(@Valid @RequestBody ScheduleSaveReqVO updateReqVO) {
         scheduleService.updateSchedule(updateReqVO);
         return success(true);
@@ -70,7 +70,7 @@ public class ScheduleController {
     @DeleteMapping("/delete")
     @Operation(summary = "删除电影场次")
     @Parameter(name = "id", description = "编号", required = true)
-    @PreAuthorize("@ss.hasPermission('cinema:schedule:create')")
+    @PreAuthorize("@ss.hasPermission('cinema:schedule:delete')")
     public CommonResult<Boolean> deleteTheater(@RequestParam("id") Integer id) {
         scheduleService.deleteSchedule(id);
         return success(true);
@@ -79,7 +79,7 @@ public class ScheduleController {
     @GetMapping("/get")
     @Operation(summary = "获得电影场次")
     @Parameter(name = "id", description = "编号", required = true, example = "1024")
-    @PreAuthorize("@ss.hasPermission('cinema:schedule:create')")
+    @PreAuthorize("@ss.hasPermission('cinema:schedule:query')")
     public CommonResult<ScheduleRespVO> getTheater(@RequestParam("id") Integer id) {
         ScheduleDO schedule = scheduleService.getSchedule(id);
         ScheduleRespVO scheduleResp = ScheduleConverter.INSTANCE.to(schedule);
@@ -91,7 +91,7 @@ public class ScheduleController {
     @GetMapping("/export-excel")
     @Operation(summary = "导出电影场次 Excel")
     @OperateLog(type = EXPORT)
-    @PreAuthorize("@ss.hasPermission('cinema:schedule:export-excel')")
+    @PreAuthorize("@ss.hasPermission('cinema:schedule:export')")
     public void exportFilmExcel(@Valid SchedulePageReqVO pageReqVO,
                                 HttpServletResponse response) throws IOException {
         AppSchedulePageReqVO pageReqVO1 = ScheduleConverter.INSTANCE.to(pageReqVO);
